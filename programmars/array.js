@@ -37,3 +37,26 @@ function solution(array, commands) {
       .slice(v[2] - 1, v[2])[0];
   });
 }
+
+// Q2 가장큰수
+
+// first solution
+function solution(numbers) {
+  const test = numbers
+    .map((n) => n + "")
+    .sort((a, b) => b + a - (a + b))
+    .join("");
+  const answer = test[0] === "0" ? "0" : test;
+  return answer;
+}
+
+// second solution
+
+function solution(numbers) {
+  var answer = numbers
+    .map((v) => v + "")
+    .sort((a, b) => (b + a) * 1 - (a + b) * 1)
+    .join("");
+
+  return answer[0] === "0" ? "0" : answer;
+}
