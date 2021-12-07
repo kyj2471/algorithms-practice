@@ -150,3 +150,39 @@ function solution(numbers) {
 
   return answer;
 }
+
+// Q3 완전탐색 > 카펫
+
+// solution1
+
+function solution(brown, yellow) {
+  const container = brown + yellow;
+  let answer = [0, 0];
+
+  for (let width = container - 1; width > 0; width--) {
+    if (container % width) continue;
+    const height = container / width;
+    const y = (width - 2) * (height - 2);
+    const b = container - y;
+    if (yellow === y && brown === b) {
+      answer[0] = width;
+      answer[1] = height;
+      break;
+    }
+  }
+  return answer;
+}
+
+// solution2
+// 해당 문제는 개편되었습니다
+function solution(brown, yellow) {
+  var answer = [];
+  for (var i = 3; i <= (brown + yellow) / i; i++) {
+    var x = Math.floor((brown + yellow) / i);
+    if ((x - 2) * (i - 2) === yellow) {
+      break;
+    }
+  }
+
+  return [x, i];
+}
